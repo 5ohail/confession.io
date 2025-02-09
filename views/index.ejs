@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CONFESSION.IO</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-900">
+    <nav class="flex justify-between mx-5 items-center">
+    <h1 id="logo" class="text-gray-100 font-semibold text-3xl p-8">CONFESSION.IO</h1>
+    <a href="/admin" class="adminPanel text-gray-100 border-[1px] border-[#fff] text-xl px-3 py-2 rounded-3xl">Admin</a>
+  </nav>
+    <div id="confessionBox" class="flex justify-center p-4 m-10">
+      <form action="/confession" method="POST" class="bg-gray-800 p-8 rounded-lg flex flex-col">
+        <textarea name="confession" id="confession" class="w-[60vw] h-[30vh] bg-gray-700 text-gray-100 p-4 rounded-lg" placeholder="Confess your secrets here..."></textarea>
+        <button type="submit" class="bg-gray-700 text-gray-100 p-4 rounded-lg mt-4">Submit</button>
+      </form>
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/javascripts/script.js">
+  </script>
+   </body>
+</html>

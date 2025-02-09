@@ -1,0 +1,44 @@
+.adminPanel{
+    position: relative;
+    overflow: hidden;
+    transition: 0.7s linear;
+    z-index: 9;
+    
+}
+.adminPanel::after{
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: 6.4vh;
+    width: 0;
+    top: -0.1vh;
+    left: -0.1vh;
+    z-index: -1;
+    transition: 0.7s linear;
+}
+.adminPanel:hover::after{
+    width: 5.6vw;
+}
+.adminPanel:hover{
+    color: #101828;
+}
+.confession-item{
+    border: 1px solid #969696;
+    width: 80%;
+    margin: 1rem 4rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #141f33;
+}
+.confession{
+    padding: 3.5rem 4rem;
+}
+.confession h2{
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+.confession h1{
+    font-weight: 600;
+    font-size: 1.4rem;
+    padding: 0 0.3rem;
+}
