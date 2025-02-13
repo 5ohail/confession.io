@@ -10,20 +10,27 @@ expressSession.admin = ""; // Initialize session variable to null.
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-router.get('/confession', async function(req, res, next) {
+router.get('/api/confession', async function(req, res, next) {
+  if(expressSession.admin == 'admin'){
   const api = await confessionModel.find();
-  res.send(api);
+  res.status(200).json(api);
+  }
+  else{
+    res.status(403).json({message: 'Forbidden'});
+  }
 })
-router.post('/confession', async function(req, res, next) {
+router.post('/api/confession', async function(req, res, next) {
+
   const confession = req.body.confession;
-  const createConfession = await confessionModel.create({
+  await confessionModel.create({
     confession: confession,
     user: "Anonymous"
   });
+
   res.redirect('/');
 // Print the confessions to the console for debugging.
 });
-router.get('/login', function(req, res, next) {
+router.get('/login', async function(req, res, next) {
   res.render('login');
 });
 router.post('/login', async function(req, res, next) {

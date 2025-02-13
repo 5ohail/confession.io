@@ -6,16 +6,24 @@ var logger = require('morgan');
 const dotenv = require('dotenv');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var app = express();
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/admin").then(()=>{
-    console.log('Connected to MongoDB');
-  }).catch(err => console.log(err));
-
+var app = express();
+dotenv.config();
+const MongoURI = process.env.MONGODB_URL;
+const connectToDB = async () =>{
+ await mongoose.connect(MongoURI,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(()=>{
+      console.log('Connected to MongoDB');
+    }).catch(err => console.log(err));
+  
+}
+connectToDB();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-dotenv.config();
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
