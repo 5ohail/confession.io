@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../utils/Authcontext'
+import { Link, useNavigate } from 'react-router-dom';
 const Styles = {
     centerDiv:{
         display: 'flex',
@@ -36,37 +35,35 @@ const Styles = {
         textAlign: 'center',
         marginBottom: '1rem',
     },
-     p:{
+    p:{
       textAlign: 'center',
       marginTop: '1rem',
     },
-     link: {
+    link: {
         color: '#007bff',
         textDecoration: 'none',
 }
 }
-const Login = () => {
-   const navigate = useNavigate();
+const Register = () => {
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useAuth();
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`${import.meta.env.VITE_API_URL}/login`, { username, password })
+        axios.post(`${import.meta.env.VITE_API_URL}/register`, { username, email, password})
             .then(response => {
                 if (response.data.success) {
-                    alert('Login successful');
-                    login({ user: response.data.user.username, token: response.data.token,admin: response.data.user.isAdmin });
+                    alert('Registration successful');
                     // Redirect to home or dashboard
-                    navigate('/');
-
+                    navigate('/login');
                 } else {
-                    alert('Login failed: ' + response.data.message);
+                    alert('Registration failed: ' + response.data.message);
                 }
             })
             .catch(error => {
-                console.error('There was an error logging in!', error);
-                alert('Login failed: ' + error.message);
+                console.error('There was an error registering!', error);
+                alert('Registration failed: ' + error.message);
             });
     }
   return (
@@ -74,12 +71,13 @@ const Login = () => {
     <form onSubmit={handleSubmit} style={Styles.form}>
         <h1 style={Styles.h1}>CONFESSION.IO</h1>
        <input type="text" placeholder="Username" style={Styles.input} value={username} onChange={(e) => setUsername(e.target.value)} />
+       <input type="email" placeholder="Email" style={Styles.input} value={email} onChange={(e) => setEmail(e.target.value)} />
        <input type="password" placeholder="Password" style={Styles.input} value={password} onChange={(e) => setPassword(e.target.value)} />
-       <button type="submit" style={Styles.button}>Login</button>
-       <p style={Styles.p}>Don't have an account? <Link to="/register" style={Styles.link}>Register</Link></p>
+       <button type="submit" style={Styles.button}>Register</button>
+       <p style={Styles.p}>Already have an account? <Link to="/login" style={Styles.link}>Login</Link></p>
     </form>
     </div>
   )
 }
 
-export default Login
+export default Register
