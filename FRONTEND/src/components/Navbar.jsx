@@ -8,7 +8,7 @@ const Styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '1rem',
-    margin: '0.7rem 0',
+    margin: '0.5rem 0',
     color: '#000',
   },
   navLogo: {
@@ -41,6 +41,12 @@ const Styles = {
     display: 'inline-block',
     transform: 'translate(0,-0.4rem)',
   },
+  line : {
+    width: "95vw",
+    height: "1px",
+    backgroundColor: "#00000022",
+    margin: "0 1.3rem"
+  },
 };
 
 const Navbar = () => {
@@ -49,6 +55,7 @@ const Navbar = () => {
   const admin = user?.admin;
 
   return (
+    <>
     <nav style={Styles.nav}>
       <h1 style={Styles.navLogo}>Confession.io</h1>
       <ul style={Styles.navList}>
@@ -74,6 +81,8 @@ const Navbar = () => {
         )}
       </ul>
     </nav>
+    <div style={Styles.line}></div>
+    </>
   );
 };
 
