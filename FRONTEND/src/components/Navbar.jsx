@@ -47,7 +47,7 @@ const Styles = {
     cursor: 'pointer',
     padding: '0.5rem 1rem',
     display: 'inline-block',
-    transform: 'translate(0,-0.4rem)',
+    transform: 'translate(0rem,0.07rem)',
   },
   mobileButton: {
     backgroundColor: '#fff',
@@ -65,21 +65,21 @@ const Styles = {
     margin: '0 1.3rem',
   },
   hamburger: {
-    width: '30px',
-    height: '24px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    cursor: 'pointer',
-    zIndex: 1001,
-  },
-  bar: {
-    height: '3px',
-    width: '24px',
-    backgroundColor: '#000',
-    borderRadius: '5px',
-    transition: '0.4s',
-  },
+  width: '24px',              // ↓ Reduced from 30px
+  height: '18px',             // ↓ Reduced from 24px
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  cursor: 'pointer',
+  zIndex: 1001,
+},
+ bar: {
+  height: '2px',              // ↓ Reduced from 3px
+  width: '100%',
+  backgroundColor: '#000',
+  borderRadius: '5px',
+  transition: '0.4s',
+},
   mobileMenu: {
     position: 'absolute',
     top: '100%',
@@ -154,7 +154,7 @@ const Navbar = () => {
             <div style={Styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
               <div style={{
                 ...Styles.bar,
-                transform: menuOpen ? 'rotate(45deg) translate(8px, 8px)' : 'none'
+                transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none'
               }} />
               <div style={{
                 ...Styles.bar,
