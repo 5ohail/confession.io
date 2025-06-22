@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     fetchConfessionData();
-  }, [confessions]);
+  }, []);
 
   return (
     <AuthContext.Provider
