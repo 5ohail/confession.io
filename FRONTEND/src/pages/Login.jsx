@@ -75,7 +75,6 @@ const Login = () => {
       .post(`${import.meta.env.VITE_API_URL}/login`, { username, password })
       .then((response) => {
         if (response.data.success) {
-          alert('Login successful');
           login({
             user: response.data.user.username,
             token: response.data.token,
@@ -83,12 +82,11 @@ const Login = () => {
           });
           navigate('/');
         } else {
-          alert('Login failed: ' + response.data.message);
+          console.log('Login failed: ' + response.data.message);
         }
       })
       .catch((error) => {
         console.error('There was an error logging in!', error);
-        alert('Login failed: ' + error.message);
       });
   };
 
