@@ -1,5 +1,6 @@
 import express from 'express';
 import UserModel from '../models/userModel.js'; // Adjust the path as necessary
+import confessionModel from '../models/confessionModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 const router = express.Router();
@@ -36,4 +37,16 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Error logging in', error: error.message, success: false });
     }
 });
+router.route('/confessions')
+.get(async (req,res)=>{
+    const allConfessions = await confessionModel.find({});
+    res.json({...allConfessions})
+})
+.post(async (req,res)=>{
+    const {user, confession} = req.body;
+    await confessionModel.create({
+        user : user,
+        confession : confession
+    })
+})
 export default router;
